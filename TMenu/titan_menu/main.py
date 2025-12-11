@@ -16,6 +16,8 @@ def main():
     username = input("Username: ").strip()
     password = getpass.getpass("Password: ")
     
+    stored_username = username
+    
     tq = TitanQueries(username, password)
     if not tq.connect():
         print("[!] Failed to connect. Exiting.\n")
@@ -161,13 +163,12 @@ def main():
                     print(f"[*] You now have an interactive bash shell")
                     
                     if device_mgmt_ip != 'N/A':
-                        print(f"[*] To SSH to {current_device}:")
-                        print(f"    ssh neteng@{device_mgmt_ip}")
-                        print(f"    OR: ssh <username>@{device_mgmt_ip}")
+                        print(f"[*] Auto-executing: ssh {stored_username}@{device_mgmt_ip}")
+                        print(f"[*] To use a different username, press Ctrl+C and type: ssh <username>@{device_mgmt_ip}")
                     
                     print(f"[*] Type 'exit' or 'logout' to close\n")
                     
-                    jumpbox.start_interactive_shell()
+                    jumpbox.start_interactive_shell(auto_ssh_username=stored_username, auto_ssh_ip=device_mgmt_ip if device_mgmt_ip != 'N/A' else None)
                     
                     jumpbox.disconnect()
                     print(f"\n[+] Jumpbox session closed\n")
@@ -184,6 +185,7 @@ def main():
     
     finally:
         tq.disconnect()
+        stored_username = None
 
 
 if __name__ == "__main__":
