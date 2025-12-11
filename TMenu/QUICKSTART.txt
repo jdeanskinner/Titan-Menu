@@ -1,0 +1,104 @@
+========================================
+TITAN MENU v2.0 - QUICK START GUIDE
+========================================
+
+RUNNING THE PROGRAM:
+
+1. Open a command prompt or PowerShell
+
+2. Navigate to this directory:
+   cd C:\Users\...\TMenu
+
+3. Run the program:
+   python titan_menu_v2.py
+
+4. Follow the on-screen prompts:
+   - Enter your AD username
+   - Enter your AD password
+   - Select device and query options
+
+========================================
+REQUIREMENTS:
+========================================
+
+Python 3.7+ with the following packages:
+- psycopg2       (database connection)
+- paramiko       (SSH connections)
+- pandas         (data handling)
+- tabulate       (table formatting)
+
+Install missing packages:
+   pip install psycopg2 paramiko pandas tabulate
+
+========================================
+WAT'S INSIDE:
+========================================
+
+✓ titan_menu_v2.py      - Main entry point
+✓ titan_menu/           - Package with all modules:
+  - database.py         - Titan DB connection
+  - queries.py          - Database queries
+  - display.py          - UI display functions
+  - main.py             - Interactive menu loop
+  - ssh_*.py            - SSH functionality
+  - bastion_*.py        - Bastion host support
+  - nre_jumpbox.py      - NRE jumpbox integration
+  - superputty_config.py- SuperPutty config generation
+  - napa_gateway.py     - NAPA gateway integration
+
+========================================
+KEY FEATURES:
+========================================
+
+[Device Info]
+- View device information
+- Hardware inventory
+- Device status and location
+
+[Interfaces]
+- All interfaces
+- UP/DOWN filters
+- Interface statistics
+
+[Layer 2/3]
+- LLDP/CDP neighbors
+- Circuit interfaces
+- OSPF neighbors
+- IS-IS circuits
+
+[Performance]
+- IP SLA data
+- Network statistics
+
+[Remote Access]
+- SSH command execution
+- Interactive shell via bastion
+- Device access through jump hosts
+
+========================================
+DATABASE CONNECTION:
+========================================
+
+The program connects to:
+- titandb.wal-mart.com:5432
+- Database: gorm
+
+You will be prompted for credentials on startup.
+
+========================================
+SUPPORT:
+========================================
+
+For issues or questions:
+1. Check database connectivity
+2. Verify AD credentials
+3. Ensure required packages are installed
+4. Check network access to bastion hosts
+
+========================================
+VERSION INFO:
+========================================
+
+Titan Menu v2.0
+
+========================================
